@@ -1,0 +1,79 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1754463583031-1
+      author: Mariusz
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: order_items_seq
+            startValue: 1
+  - changeSet:
+      id: 1754463583031-2
+      author: Mariusz
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: orders_seq
+            startValue: 1
+  - changeSet:
+      id: 1754463583031-3
+      author: Mariusz
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_orderitems
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: product_id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INT
+              - column:
+                  name: unit_price
+                  type: DECIMAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: order_id
+                  type: INT
+            tableName: order_items
+  - changeSet:
+      id: 1754463583031-4
+      author: Mariusz
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_orders
+                  name: id
+                  type: INT
+            tableName: orders
+  - changeSet:
+      id: 1754463583031-5
+      author: Mariusz
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: order_id
+            baseTableName: order_items
+            constraintName: FK_ORDERITEMS_ON_ORDER
+            referencedColumnNames: id
+            referencedTableName: orders
+
