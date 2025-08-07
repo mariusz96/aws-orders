@@ -1,6 +1,8 @@
 package com.mariusz96.awsorders.orders;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,19 +24,25 @@ public class OrdersControllerTests {
         mockMvc.perform(post("/api/orders")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                 {"orderItems": [{"productId": 2,"quantity": 4,"unitPrice": 16.60}]}
-                                 """))
+                                {"orderItems": [{"productId": 2,"quantity": 4,"unitPrice": 16.60}]}
+                                """))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
 
-    @Test
-    void doesNotCreateInvalidOrder() throws Exception {
+    @ParameterizedTest
+    @ValueSource(strings = {
+            """
+            {"orderItems": [{"productId": 2,"quantity": -4,"unitPrice": 16.60}]}
+            """,
+            """
+            {"orderItems": [{"productId": 2,"quantity": 4,"unitPrice": -16.60}]}
+            """
+    })
+    void validatesInvalidOrder(String order) throws Exception {
         mockMvc.perform(post("/api/orders")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                                 {"orderItems": [{"productId": 2,"quantity": 4,"unitPrice": -16.60}]}
-                                 """))
+                        .content(order))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }

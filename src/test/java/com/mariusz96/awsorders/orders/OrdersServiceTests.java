@@ -10,7 +10,7 @@ import static org.mockito.Mockito.when;
 
 public class OrdersServiceTests {
     @Test
-    void getsOrderIfItExists(){
+    void getsOrderIfExists() {
         var expected = new Order();
         var repository = mock(OrdersRepository.class);
         when(repository.findById(1))
@@ -19,17 +19,17 @@ public class OrdersServiceTests {
 
         var actual = service.getOrder(1);
 
-        assertEquals(expected, actual.orElse(null));
+        assertEquals(expected, actual.orElseThrow());
     }
 
     @Test
-    void getsEmptyIfOrderDoesNotExist(){
+    void getsEmptyIfOrderDoesNotExist() {
         var repository = mock(OrdersRepository.class);
         when(repository.findById(1))
                 .thenReturn(Optional.empty());
         var service = new OrdersService(repository);
 
-        var actual =  service.getOrder(1);
+        var actual = service.getOrder(1);
 
         assertTrue(actual.isEmpty());
     }

@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 1754239328970-1
+      id: 1754463583031-1
       author: Mariusz
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -9,7 +9,7 @@ databaseChangeLog:
             sequenceName: order_items_seq
             startValue: 1
   - changeSet:
-      id: 1754239328970-2
+      id: 1754463583031-2
       author: Mariusz
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -18,7 +18,7 @@ databaseChangeLog:
             sequenceName: orders_seq
             startValue: 1
   - changeSet:
-      id: 1754239328970-3
+      id: 1754463583031-3
       author: Mariusz
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -45,11 +45,13 @@ databaseChangeLog:
                   name: unit_price
                   type: DECIMAL
               - column:
+                  constraints:
+                    nullable: false
                   name: order_id
                   type: INT
             tableName: order_items
   - changeSet:
-      id: 1754239328970-4
+      id: 1754463583031-4
       author: Mariusz
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -64,7 +66,7 @@ databaseChangeLog:
                   type: INT
             tableName: orders
   - changeSet:
-      id: 1754239328970-5
+      id: 1754463583031-5
       author: Mariusz
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:

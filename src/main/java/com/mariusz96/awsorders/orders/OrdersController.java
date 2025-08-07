@@ -10,25 +10,16 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/api/orders")
 public class OrdersController {
-    private  final OrdersService service;
+    private final OrdersService service;
 
-    public OrdersController(OrdersService service){
+    public OrdersController(OrdersService service) {
         this.service = service;
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderDto> getOrder(@PathVariable int id) {
         return service.getOrder(id)
-                .map(o -> new OrderDto(
-                        o.getId(),
-                        o.getOrderItems()
-                                .stream()
-                                .map(i -> new OrderItemDto(
-                                        i.getProductId(),
-                                        i.getQuantity(),
-                                        i.getUnitPrice()))
-                                .toList()
-                ))
+                .map(OrdersController::mapOrder)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -38,7 +29,7 @@ public class OrdersController {
             @Valid @RequestBody CreateOrderDto createOrder) {
         var order = new Order();
 
-        var orderItems = new ArrayList<OrderItem>();
+        var orderItems = order.getOrderItems();
         for (var createOrderItem : createOrder.orderItems()) {
             var orderItem = new OrderItem();
             orderItem.setProductId(createOrderItem.productId());
@@ -46,10 +37,21 @@ public class OrdersController {
             orderItem.setUnitPrice(createOrderItem.unitPrice());
             orderItems.add(orderItem);
         }
-        order.setOrderItems(orderItems);
 
         service.createOrder(order);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(order.getId());
+    }
+
+    private static OrderDto mapOrder(Order order) {
+        return new OrderDto(
+                order.getId(),
+                order.getOrderItems()
+                        .stream()
+                        .map(orderItem -> new OrderItemDto(
+                                orderItem.getProductId(),
+                                orderItem.getQuantity(),
+                                orderItem.getUnitPrice()))
+                        .toList());
     }
 }
