@@ -39,7 +39,7 @@ GET /api/orders/1
 - Docker Desktop
 
 ## Test:
-- `Edit Configurations` > `Add New Configuration` > `JUnit` > `corretto-21, aws-orders.tests, All in package` > `Run`
+- `Run` > `Edit Configurations` > `Add New Configuration` > `JUnit` > `corretto-21, aws-orders.tests, All in package` > `Run`
 
 ## Deploy:
 - Create a new Aurora PostgreSQL database
