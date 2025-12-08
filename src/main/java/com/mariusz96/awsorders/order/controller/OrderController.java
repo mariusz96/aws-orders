@@ -25,7 +25,7 @@ public class OrderController {
         var order = service.getOrder(id);
 
         return order
-                .map(order1 -> ResponseEntity.ok(mapper.orderToOrderDto(order1)))
+                .map(value -> ResponseEntity.ok(mapper.orderToOrderDto(value)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 

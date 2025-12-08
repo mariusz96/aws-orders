@@ -2,6 +2,7 @@ package com.mariusz96.awsorders.order.service;
 
 import com.mariusz96.awsorders.order.entity.Order;
 import com.mariusz96.awsorders.order.repository.OrderRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,9 +16,10 @@ public class OrderService {
     }
 
     public Optional<Order> getOrder(int id) {
-        return repository.findById(id);
+        return repository.findOrderById(id);
     }
 
+    @Transactional
     public void createOrder(Order order) {
         repository.save(order);
     }
