@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.orders;
+package com.mariusz96.awsorders.order.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class OrdersControllerTests {
+public class OrderControllerTests {
     @Autowired
     private MockMvc mockMvc;
 

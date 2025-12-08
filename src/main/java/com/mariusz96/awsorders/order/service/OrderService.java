@@ -1,14 +1,16 @@
-package com.mariusz96.awsorders.orders;
+package com.mariusz96.awsorders.order.service;
 
+import com.mariusz96.awsorders.order.entity.Order;
+import com.mariusz96.awsorders.order.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class OrdersService {
-    private final OrdersRepository repository;
+public class OrderService {
+    private final OrderRepository repository;
 
-    public OrdersService(OrdersRepository repository) {
+    public OrderService(OrderRepository repository) {
         this.repository = repository;
     }
 

@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.orders;
+package com.mariusz96.awsorders.order.entity;
 
 import jakarta.persistence.*;
 

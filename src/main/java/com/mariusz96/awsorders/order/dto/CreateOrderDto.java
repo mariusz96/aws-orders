@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.orders;
+package com.mariusz96.awsorders.order.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
