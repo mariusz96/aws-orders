@@ -1,4 +1,4 @@
-# AWS Order
+# AWS Orders
 A web API in Java and AWS:
 ```JavaScript
 POST /api/orders
