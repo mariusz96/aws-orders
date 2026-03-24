@@ -22,7 +22,7 @@ public class OrderServiceTests {
 
         var actual = service.getOrder(1);
 
-        assertEquals(expected, actual.orElseThrow());
+        assertEquals(expected, actual.get());
     }
 
     @Test
