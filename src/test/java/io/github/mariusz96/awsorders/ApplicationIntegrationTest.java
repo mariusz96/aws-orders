@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders;
+package io.github.mariusz96.awsorders;
 
 import org.junit.jupiter.api.Test;
 

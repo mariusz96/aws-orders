@@ -1,6 +1,5 @@
-package com.mariusz96.awsorders.order;
+package io.github.mariusz96.awsorders;
 
-import com.mariusz96.awsorders.IntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class OrderControllerIntegrationTest extends IntegrationTest {
+class OrderIntegrationTest extends IntegrationTest {
 
     @Autowired
     TestRestTemplate restTemplate;

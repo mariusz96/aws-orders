@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.order;
+package io.github.mariusz96.awsorders;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -11,5 +11,5 @@ public interface OrderMapper {
     GetOrderResponse toGetOrderResponse(Order order);
 
     @Mapping(target = "id", ignore = true)
-    Order toOrder(CreateOrderRequest createOrderRequest);
+    Order toOrder(CreateOrderRequest request);
 }

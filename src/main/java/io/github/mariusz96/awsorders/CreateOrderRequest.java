@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.order;
+package io.github.mariusz96.awsorders;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;

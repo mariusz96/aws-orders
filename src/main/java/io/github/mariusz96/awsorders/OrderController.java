@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.order;
+package io.github.mariusz96.awsorders;
 
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -27,9 +27,8 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Integer> createOrder(
-            @Valid @RequestBody CreateOrderRequest createOrder) {
-        var order = mapper.toOrder(createOrder);
+    public ResponseEntity<Integer> createOrder(@Valid @RequestBody CreateOrderRequest request) {
+        var order = mapper.toOrder(request);
 
         service.createOrder(order);
 

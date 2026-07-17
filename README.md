@@ -7,7 +7,7 @@ POST /orders
     {
       "productId": 2,
       "quantity": 4,
-      "unitPrice": 16.60
+      "unitPrice": 10.00
     }
   ]
 }
@@ -27,7 +27,7 @@ GET /orders/1
     {
       "productId": 2,
       "quantity": 4,
-      "unitPrice": 16.60
+      "unitPrice": 10.00
     }
   ]
 }

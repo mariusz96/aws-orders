@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.order;
+package io.github.mariusz96.awsorders;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -8,5 +8,5 @@ import org.mapstruct.MappingConstants;
 public interface OrderItemMapper {
 
     @Mapping(target = "id", ignore = true)
-    OrderItem toOrderItem(CreateOrderRequestItem createOrderRequestItem);
+    OrderItem toOrderItem(CreateOrderRequestItem requestItem);
 }

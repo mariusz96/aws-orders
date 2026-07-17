@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.order;
+package io.github.mariusz96.awsorders;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
