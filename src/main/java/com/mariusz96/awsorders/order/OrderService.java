@@ -1,7 +1,5 @@
-package com.mariusz96.awsorders.service;
+package com.mariusz96.awsorders.order;
 
-import com.mariusz96.awsorders.entity.Order;
-import com.mariusz96.awsorders.repository.OrderRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

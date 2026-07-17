@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.entity;
+package com.mariusz96.awsorders.order;
 
 import jakarta.persistence.*;
 
@@ -12,9 +12,10 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id", nullable = false)
-    private List<OrderItem> orderItems = new ArrayList<>();
+    private final List<OrderItem> orderItems = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -26,9 +27,5 @@ public class Order {
 
     public List<OrderItem> getOrderItems() {
         return orderItems;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
     }
 }

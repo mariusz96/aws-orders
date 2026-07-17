@@ -1,9 +1,12 @@
-package com.mariusz96.awsorders.dto;
+package com.mariusz96.awsorders.order;
 
 import java.math.BigDecimal;
 
-public record OrderItemDto(
+public record GetOrderResponseItem(
+
         int productId,
+
         int quantity,
+
         BigDecimal unitPrice) {
 }

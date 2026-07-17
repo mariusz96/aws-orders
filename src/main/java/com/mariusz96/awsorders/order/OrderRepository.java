@@ -1,6 +1,5 @@
-package com.mariusz96.awsorders.repository;
+package com.mariusz96.awsorders.order;
 
-import com.mariusz96.awsorders.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

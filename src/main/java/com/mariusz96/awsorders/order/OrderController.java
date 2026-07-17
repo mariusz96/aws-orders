@@ -1,9 +1,5 @@
-package com.mariusz96.awsorders.controller;
+package com.mariusz96.awsorders.order;
 
-import com.mariusz96.awsorders.dto.CreateOrderDto;
-import com.mariusz96.awsorders.dto.OrderDto;
-import com.mariusz96.awsorders.mapper.OrderMapper;
-import com.mariusz96.awsorders.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,18 +18,21 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderDto> getOrder(@PathVariable int id) {
+    public ResponseEntity<GetOrderResponse> getOrder(@PathVariable int id) {
         var order = service.getOrder(id);
+
         return order
-                .map(value -> ResponseEntity.ok(mapper.orderToOrderDto(value)))
+                .map(value -> ResponseEntity.ok(mapper.toGetOrderResponse(value)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public ResponseEntity<Integer> createOrder(
-            @Valid @RequestBody CreateOrderDto createOrder) {
-        var order = mapper.createOrderDtoToOrder(createOrder);
+            @Valid @RequestBody CreateOrderRequest createOrder) {
+        var order = mapper.toOrder(createOrder);
+
         service.createOrder(order);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(order.getId());
     }
 }

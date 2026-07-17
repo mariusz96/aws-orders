@@ -1,7 +1,5 @@
-package com.mariusz96.awsorders.service;
+package com.mariusz96.awsorders.order;
 
-import com.mariusz96.awsorders.entity.Order;
-import com.mariusz96.awsorders.repository.OrderRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
@@ -11,15 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class OrderServiceTests {
+class OrderServiceTest {
+
+    OrderRepository repository = mock(OrderRepository.class);
+    OrderService service = new OrderService(repository);
 
     @Test
     void getsOrderIfExists() {
         var expected = new Order();
-        var repository = mock(OrderRepository.class);
         when(repository.findOrderById(1))
                 .thenReturn(Optional.of(expected));
-        var service = new OrderService(repository);
 
         var actual = service.getOrder(1);
 
@@ -28,10 +27,8 @@ class OrderServiceTests {
 
     @Test
     void getsEmptyIfOrderDoesNotExist() {
-        var repository = mock(OrderRepository.class);
         when(repository.findById(1))
                 .thenReturn(Optional.empty());
-        var service = new OrderService(repository);
 
         var actual = service.getOrder(1);
 

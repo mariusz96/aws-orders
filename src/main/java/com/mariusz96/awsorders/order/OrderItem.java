@@ -1,4 +1,4 @@
-package com.mariusz96.awsorders.entity;
+package com.mariusz96.awsorders.order;
 
 import jakarta.persistence.*;
 
@@ -11,8 +11,11 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private int productId;
+
     private int quantity;
+
     private BigDecimal unitPrice;
 
     public int getId() {

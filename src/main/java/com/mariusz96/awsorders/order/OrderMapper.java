@@ -1,8 +1,5 @@
-package com.mariusz96.awsorders.mapper;
+package com.mariusz96.awsorders.order;
 
-import com.mariusz96.awsorders.dto.CreateOrderDto;
-import com.mariusz96.awsorders.dto.OrderDto;
-import com.mariusz96.awsorders.entity.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -11,8 +8,8 @@ import org.mapstruct.MappingConstants;
 public interface OrderMapper {
 
     @Mapping(source = "id", target = "orderId")
-    OrderDto orderToOrderDto(Order order);
+    GetOrderResponse toGetOrderResponse(Order order);
 
     @Mapping(target = "id", ignore = true)
-    Order createOrderDtoToOrder(CreateOrderDto createOrderDto);
+    Order toOrder(CreateOrderRequest createOrderRequest);
 }

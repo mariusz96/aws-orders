@@ -1,7 +1,5 @@
-package com.mariusz96.awsorders.mapper;
+package com.mariusz96.awsorders.order;
 
-import com.mariusz96.awsorders.dto.CreateOrderItemDto;
-import com.mariusz96.awsorders.entity.OrderItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -10,5 +8,5 @@ import org.mapstruct.MappingConstants;
 public interface OrderItemMapper {
 
     @Mapping(target = "id", ignore = true)
-    OrderItem createOrderItemDtoToOrderItem(CreateOrderItemDto createOrderItemDto);
+    OrderItem toOrderItem(CreateOrderRequestItem createOrderRequestItem);
 }
